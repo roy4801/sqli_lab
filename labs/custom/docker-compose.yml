@@ -1,0 +1,95 @@
+version: "3"
+
+services:
+  mysql:
+      container_name: mysql
+      image: mysql:5.6
+      restart: always
+      expose:
+        - "3306"
+      ports:
+        - "3306:3306"
+      volumes:
+        - ./docker/mysql:/var/lib/mysql
+      environment:
+        - MYSQL_ROOT_PASSWORD=YmmRTo8R70QX3PuWlkS5
+  lab1:
+    container_name: sqli_lab1
+    image: richarvey/nginx-php-fpm
+    # build: ./lab1
+    restart: always
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - ERRORS=1
+      - PHP_ERRORS_STDERR
+    ports:
+      - "8888:80"
+    volumes: # TODO
+      - ./lab1/src:/var/www/html
+      - ./lab1/config/nginx/conf.d:/etc/nginx/conf.d
+      - ./lab1/log/nginx:/var/log/nginx
+    depends_on:
+      - mysql
+    links:
+      - mysql:mysql
+  lab2:
+    container_name: sqli_lab2
+    image: richarvey/nginx-php-fpm
+    # build: ./lab2
+    restart: always
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - ERRORS=1
+      - PHP_ERRORS_STDERR
+    ports:
+      - "8889:80"
+    volumes: # TODO
+      - ./lab2/src:/var/www/html
+      - ./lab2/config/nginx/conf.d:/etc/nginx/conf.d
+      - ./lab2/log/nginx:/var/log/nginx
+    depends_on:
+      - mysql
+    links:
+      - mysql:mysql
+  lab3:
+    container_name: sqli_lab3
+    image: richarvey/nginx-php-fpm
+    # build: ./lab3
+    restart: always
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - ERRORS=1
+      - PHP_ERRORS_STDERR
+    ports:
+      - "8890:80"
+    volumes: # TODO
+      - ./lab3/src:/var/www/html
+      - ./lab3/config/nginx/conf.d:/etc/nginx/conf.d
+      - ./lab3/log/nginx:/var/log/nginx
+    depends_on:
+      - mysql
+    links:
+      - mysql:mysql
+  lab4:
+    container_name: sqli_lab4
+    image: richarvey/nginx-php-fpm
+    # build: ./lab4
+    restart: always
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - ERRORS=1
+      - PHP_ERRORS_STDERR
+    ports:
+      - "8891:80"
+    volumes: # TODO
+      - ./lab4/src:/var/www/html
+      - ./lab4/config/nginx/conf.d:/etc/nginx/conf.d
+      - ./lab4/log/nginx:/var/log/nginx
+    depends_on:
+      - mysql
+    links:
+      - mysql:mysql

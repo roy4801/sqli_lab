@@ -1,0 +1,5 @@
+FROM richarvey/nginx-php-fpm
+LABEL maintainer="roy@nisra.net"
+
+RUN useradd -ms /bin/bash roy4801
+USER roy4801
